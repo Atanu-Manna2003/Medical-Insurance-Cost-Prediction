@@ -38,5 +38,5 @@ def predict_datapoint():
         error_message = traceback.format_exc()
         print("ERROR:", error_message)  # This will show full error logs
         return f"Internal Server Error: {error_message}", 500
-if __name__=="__main__":
-    app.run(host="0.0.0.0",debug=True)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=10000, debug=True)
