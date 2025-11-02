@@ -1,0 +1,78 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python -m src.components.data_ingestion
+    deps:
+    - path: notebook/data/insurance.csv
+      hash: md5
+      md5: d5364d06246fb4bfa4cc7d1ee89ebd0d
+      size: 55628
+    - path: src/components/data_ingestion.py
+      hash: md5
+      md5: d8e2cc69e76d82869fa738d51828fb04
+      size: 2126
+    outs:
+    - path: artifact/data.csv
+      hash: md5
+      md5: d0b06a8f7d5e62bfa3cabefb694c7168
+      size: 55690
+    - path: artifact/test.csv
+      hash: md5
+      md5: 2223ea6396e0d93d4f30928e368d39ad
+      size: 11192
+    - path: artifact/train.csv
+      hash: md5
+      md5: 8e47cf90c63d061867bb09e4f01797cd
+      size: 44542
+  data_transformation:
+    cmd: python -m src.components.data_transformation
+    deps:
+    - path: artifact/test.csv
+      hash: md5
+      md5: 2223ea6396e0d93d4f30928e368d39ad
+      size: 11192
+    - path: artifact/train.csv
+      hash: md5
+      md5: 8e47cf90c63d061867bb09e4f01797cd
+      size: 44542
+    - path: src/components/data_transformation.py
+      hash: md5
+      md5: 550fff1ed7e277cd3ea254bda59c2e7f
+      size: 4057
+    outs:
+    - path: artifact/preprocessor.pkl
+      hash: md5
+      md5: 05ca9e846fc5be466eba943c13ce7d67
+      size: 3046
+  model_trainer:
+    cmd: python -m main
+    deps:
+    - path: artifact/preprocessor.pkl
+      hash: md5
+      md5: 05ca9e846fc5be466eba943c13ce7d67
+      size: 3046
+    - path: artifact/test.csv
+      hash: md5
+      md5: 2223ea6396e0d93d4f30928e368d39ad
+      size: 11192
+    - path: artifact/train.csv
+      hash: md5
+      md5: 8e47cf90c63d061867bb09e4f01797cd
+      size: 44542
+    - path: main.py
+      hash: md5
+      md5: a1038d052f7c137428d2b98fa021403f
+      size: 556
+    - path: src/components/model_trainer.py
+      hash: md5
+      md5: 47b20505afa7ed7b79daa0a92f225999
+      size: 4910
+    outs:
+    - path: artifact/metrics.json
+      hash: md5
+      md5: fe1d5eb7ffe07e947469aa87b1475be7
+      size: 91
+    - path: artifact/model.pkl
+      hash: md5
+      md5: a7e2696df0ba725ba66c61d75072c8b8
+      size: 172820

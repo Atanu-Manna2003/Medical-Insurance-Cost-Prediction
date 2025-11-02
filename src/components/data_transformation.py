@@ -84,6 +84,17 @@ class DataTransformation:
         except Exception as e:
             raise CustomException(e,sys)
 
+
+if __name__ == "__main__":
+    from src.components.data_ingestion import DataIngestion
+    
+    obj = DataIngestion()
+    train_data, test_data = obj.initiate_data_ingestion()
+    
+    data_transformation = DataTransformation()
+    train_arr, test_arr, preprocessor_path = data_transformation.initiate_data_transformation(train_data, test_data)
+    print(f"✅ Data Transformation complete. Preprocessor saved at: {preprocessor_path}")
+
             
         
 

@@ -1,6 +1,6 @@
 stages:
   data_ingestion:
-    cmd: python src/components/data_ingestion.py
+    cmd: python -m src.components.data_ingestion
     deps:
       - src/components/data_ingestion.py
       - notebook/data/insurance.csv
@@ -10,7 +10,7 @@ stages:
       - artifact/data.csv
 
   data_transformation:
-    cmd: python -c "from src.components.data_transformation import DataTransformation; DataTransformation().initiate_data_transformation('artifact/train.csv','artifact/test.csv')"
+    cmd: python -m src.components.data_transformation
     deps:
       - src/components/data_transformation.py
       - artifact/train.csv
@@ -19,7 +19,7 @@ stages:
       - artifact/preprocessor.pkl
 
   model_trainer:
-    cmd: python main.py
+    cmd: python -m main
     deps:
       - main.py
       - src/components/model_trainer.py

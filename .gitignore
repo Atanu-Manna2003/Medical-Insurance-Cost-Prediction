@@ -173,3 +173,9 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+
+/artifact/train.csv
+/artifact/test.csv
+/artifact/data.csv
+
