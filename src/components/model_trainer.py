@@ -105,6 +105,15 @@ class ModelTrainer:
                 # ✅ Log model artifact (DagsHub-compatible)
                 mlflow.log_artifact(model_path)
 
+                import json, os
+                os.makedirs("artifact", exist_ok=True)
+                metrics = {"r2": r2, "mae": mae, "rmse": rmse}
+                with open("artifact/metrics.json", "w") as f:
+                  json.dump(metrics, f, indent=2)
+
+
+
+
             save_object(
                 file_path=self.config.trained_model_file_path,
                 obj=best_model

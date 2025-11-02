@@ -1,0 +1,32 @@
+stages:
+  data_ingestion:
+    cmd: python src/components/data_ingestion.py
+    deps:
+      - src/components/data_ingestion.py
+      - notebook/data/insurance.csv
+    outs:
+      - artifact/train.csv
+      - artifact/test.csv
+      - artifact/data.csv
+
+  data_transformation:
+    cmd: python -c "from src.components.data_transformation import DataTransformation; DataTransformation().initiate_data_transformation('artifact/train.csv','artifact/test.csv')"
+    deps:
+      - src/components/data_transformation.py
+      - artifact/train.csv
+      - artifact/test.csv
+    outs:
+      - artifact/preprocessor.pkl
+
+  model_trainer:
+    cmd: python main.py
+    deps:
+      - main.py
+      - src/components/model_trainer.py
+      - artifact/preprocessor.pkl
+      - artifact/train.csv
+      - artifact/test.csv
+    outs:
+      - artifact/model.pkl
+    metrics:
+      - artifact/metrics.json
