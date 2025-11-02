@@ -1,5 +1,5 @@
 outs:
-- md5: d5364d06246fb4bfa4cc7d1ee89ebd0d
+- md5: 61d4f73a64a3162469c0fa914c0ac365
   size: 55628
   hash: md5
   path: insurance.csv

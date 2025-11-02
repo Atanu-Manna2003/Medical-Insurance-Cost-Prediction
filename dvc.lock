@@ -5,7 +5,7 @@ stages:
     deps:
     - path: notebook/data/insurance.csv
       hash: md5
-      md5: d5364d06246fb4bfa4cc7d1ee89ebd0d
+      md5: 61d4f73a64a3162469c0fa914c0ac365
       size: 55628
     - path: src/components/data_ingestion.py
       hash: md5
@@ -14,7 +14,7 @@ stages:
     outs:
     - path: artifact/data.csv
       hash: md5
-      md5: d0b06a8f7d5e62bfa3cabefb694c7168
+      md5: dc62bcda2f479b667f024440f463ebde
       size: 55690
     - path: artifact/test.csv
       hash: md5
@@ -22,7 +22,7 @@ stages:
       size: 11192
     - path: artifact/train.csv
       hash: md5
-      md5: 8e47cf90c63d061867bb09e4f01797cd
+      md5: 183e616a610e26b8a23576754338f78e
       size: 44542
   data_transformation:
     cmd: python -m src.components.data_transformation
