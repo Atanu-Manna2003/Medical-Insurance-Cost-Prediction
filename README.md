@@ -53,5 +53,13 @@ set MLFLOW_TRACKING_URI=""
 set MLFLOW_TRACKING_USERNAME=""
 set MLFLOW_TRACKING_PASSWORD=""
 
+ Step 4️⃣: Add Secrets to GitHub
+Secret Name	Purpose
+DOCKERHUB_USERNAME	Docker Hub username
+DOCKERHUB_TOKEN	Docker Hub access token
+RENDER_DEPLOY_HOOK	Render deploy webhook
+MLFLOW_TRACKING_URI	MLflow/DagsHub URI
+MLFLOW_TRACKING_USERNAME	MLflow username
+MLFLOW_TRACKING_PASSWORD	MLflow password
 run python main.py
 Visit http://localhost:5000 to access the prediction interface.
